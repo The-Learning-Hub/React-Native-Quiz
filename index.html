@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>React Native — Interactive Mobile App Development Lesson</title>
+<style>
+:root{--bg:#07111f;--panel:#0e1b2d;--panel2:#13263e;--text:#eef6ff;--muted:#9fb1c8;--cyan:#61dafb;--blue:#3b82f6;--green:#34d399;--yellow:#fbbf24;--pink:#f472b6}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 0,#12345b 0,#07111f 38%);color:var(--text);font:16px/1.6 "Segoe UI",Arial,sans-serif}
+header{position:sticky;top:0;z-index:20;background:#07111fe8;backdrop-filter:blur(14px);border-bottom:1px solid #223954}.nav{max-width:1180px;margin:auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:800}.brand b{color:var(--cyan)}nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:.9rem}nav a:hover{color:#fff}
+.hero{max-width:1180px;margin:auto;padding:65px 20px 45px;display:grid;grid-template-columns:1.15fr .85fr;gap:35px;align-items:center}.pill{display:inline-block;border:1px solid #315b7c;color:var(--cyan);padding:5px 11px;border-radius:999px;font-size:.8rem}.hero h1{font-size:clamp(2.4rem,6vw,4.7rem);line-height:1;margin:16px 0}.hero h1 span{color:var(--cyan)}.hero p{font-size:1.1rem;color:var(--muted)}button{border:0;border-radius:10px;padding:11px 15px;font-weight:700;cursor:pointer;background:var(--cyan);color:#06111d}button:hover{filter:brightness(1.08)}button.secondary{background:#243a57;color:#fff}
+.phone{width:230px;height:420px;border:8px solid #263b55;border-radius:35px;background:#091422;margin:auto;box-shadow:0 25px 60px #0008;position:relative;padding:45px 18px 20px}.notch{position:absolute;top:10px;left:78px;width:60px;height:17px;background:#263b55;border-radius:20px}.appbar{background:#122d4a;padding:12px;border-radius:12px;color:var(--cyan);font-weight:800}.screen-card{background:#102239;padding:13px;border-radius:12px;margin-top:12px}.dot{height:45px;width:45px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--blue));margin-bottom:8px}
+section{max-width:1180px;margin:auto;padding:38px 20px}.title h2{margin:0;font-size:2rem}.title p{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(145deg,var(--panel),#0a1627);border:1px solid #263c57;border-radius:18px;padding:20px;box-shadow:0 12px 30px #0003}.card h3{margin-top:4px}.icon{font-size:1.7rem}
+.callout{border-left:4px solid var(--cyan);background:#0c1b2d;padding:16px 18px;border-radius:0 12px 12px 0}.warn{border-color:var(--yellow)}.good{border-color:var(--green)}
+.timeline{display:grid;gap:13px}.history{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:18px;background:var(--panel);border:1px solid #263c57;border-radius:16px}.year{font-size:1.5rem;color:var(--cyan);font-weight:800}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.tab.active{background:var(--cyan);color:#06111d}.tabbody{display:none}.tabbody.active{display:block}
+.flow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.flow div{background:#142942;border:1px solid #2a4663;border-radius:12px;padding:12px 15px}.arrow{color:var(--cyan);font-weight:bold}.code{background:#050b14;border:1px solid #263c57;border-radius:13px;padding:17px;overflow:auto;font-family:Consolas,monospace;color:#dbeafe}.tag{color:#61dafb}.kw{color:#c084fc}.str{color:#86efac}
+.quiz{background:linear-gradient(145deg,#11233a,#0b1626);border:1px solid #324b68;border-radius:18px;padding:23px}.choice{display:block;width:100%;text-align:left;margin:9px 0;background:#203550;color:#fff}.choice.correct{background:#0c6249}.choice.wrong{background:#6b2941}.feedback{font-weight:700;margin-top:12px}.score{color:var(--cyan);font-weight:800}
+.checklist label{display:block;padding:10px;border-bottom:1px solid #253850}.checklist input{accent-color:var(--cyan);margin-right:8px}
+footer{text-align:center;color:var(--muted);padding:40px 20px 65px}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.history{grid-template-columns:1fr}.phone{width:200px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="brand">📱 <b>React Native</b> Starter Lab</div><nav><a href="#intro">Intro</a><a href="#history">History</a><a href="#setup">Setup</a><a href="#roadmap">Roadmap</a><a href="#quiz">Quiz</a></nav></div></header>
+
+<section class="hero">
+<div><span class="pill">INTERACTIVE LESSON • MOBILE APP DEVELOPMENT</span><h1>Build Apps.<br><span>Learn React Native.</span></h1><p>A beginner-friendly lesson for students who want to build mobile applications for Android and iOS using JavaScript/TypeScript and React Native.</p><button onclick="document.querySelector('#intro').scrollIntoView()">🚀 Start Lesson</button></div>
+<div class="phone"><div class="notch"></div><div class="appbar">My First App</div><div class="screen-card"><div class="dot"></div><b>Hello, React Native!</b><br><small style="color:var(--muted)">One codebase • mobile UI</small></div><div class="screen-card">👆 Press a button<br>⚡ Change the screen<br>📱 Run on a phone</div></div>
+</section>
+
+<section id="intro">
+<div class="title"><h2>01 — What is React Native?</h2><p>Start with the most important distinction.</p></div>
+<div class="grid">
+<div class="card"><div class="icon">⚛️</div><h3>React Native</h3><p>An open-source framework for building native mobile applications using React and JavaScript/TypeScript.</p></div>
+<div class="card"><div class="icon">📱</div><h3>Mobile First</h3><p>It is designed for mobile app development, especially Android and iOS, rather than ordinary web pages.</p></div>
+<div class="card"><div class="icon">🧩</div><h3>Reusable Components</h3><p>You build interfaces from components such as <code>View</code>, <code>Text</code>, <code>Image</code>, <code>Button</code>, and your own components.</p></div>
+</div><br>
+<div class="callout"><b>Important:</b> React and React Native are related, but they are not the same thing. <b>React</b> is primarily a UI library for building interfaces; <b>React Native</b> uses React concepts to build mobile applications.</div>
+</section>
+
+<section>
+<div class="title"><h2>Where is React Native used?</h2><p>Tap each card.</p></div>
+<div class="grid">
+<div class="card reveal" data-text="📱 Social and community apps — feeds, profiles, messaging, notifications and interactive screens."><h3>💬 Social Apps</h3><button class="secondary">Reveal</button></div>
+<div class="card reveal" data-text="🛒 Business and e-commerce apps — product catalogs, orders, accounts, dashboards and customer tools."><h3>🛍️ Business Apps</h3><button class="secondary">Reveal</button></div>
+<div class="card reveal" data-text="🏫 School and utility apps — attendance, learning tools, monitoring dashboards, forms and information systems."><h3>🏫 School Apps</h3><button class="secondary">Reveal</button></div>
+</div>
+</section>
+
+<section id="history">
+<div class="title"><h2>02 — A Short History of React Native</h2><p>How the technology developed into a mobile development tool.</p></div>
+<div class="timeline">
+<div class="history"><div class="year">2013</div><div><b>React appears</b><br>Facebook introduced React as an open-source JavaScript library for building user interfaces. React became the conceptual foundation for React Native.</div></div>
+<div class="history"><div class="year">2015</div><div><b>React Native becomes public</b><br>Facebook announced React Native publicly at its F8 developer conference and released it as an open-source project for building native mobile apps.</div></div>
+<div class="history"><div class="year">2015+</div><div><b>Community ecosystem grows</b><br>React Native expanded beyond Facebook through contributions from developers, companies, libraries, tools, and the wider open-source community.</div></div>
+<div class="history"><div class="year">2020s</div><div><b>Modern React Native</b><br>The project continued evolving with a modernized architecture, improved performance and developer tooling, while supporting Android and iOS development.</div></div>
+</div><br><div class="callout good"><b>Why history matters:</b> React Native was created from the idea that developers could use React's component model and JavaScript skills to build mobile interfaces without creating completely separate application UIs for each platform.</div>
+</section>
+
+<section>
+<div class="title"><h2>03 — How React Native Works</h2><p>Compare the development path with traditional web development.</p></div>
+<div class="flow"><div>👨‍💻 JavaScript / TypeScript</div><span class="arrow">→</span><div>⚛️ React Components</div><span class="arrow">→</span><div>📱 React Native</div><span class="arrow">→</span><div>🤖 Android / 🍎 iOS</div></div><br>
+<div class="callout warn"><b>Think like a developer:</b> You write components and application logic, React Native handles the mobile UI layer, and the result runs as a mobile application.</div>
+</section>
+
+<section id="setup">
+<div class="title"><h2>04 — Prepare Your Environment</h2><p>Complete the setup checklist in order.</p></div>
+<div class="grid">
+<div class="card"><h3>💻 Computer</h3><ul><li>Windows, macOS or Linux</li><li>Stable internet for installation/packages</li><li>Code editor such as VS Code</li></ul></div>
+<div class="card"><h3>🧰 Core Tools</h3><ul><li>Node.js</li><li>npm</li><li>Git (recommended)</li><li>React Native project tooling</li></ul></div>
+<div class="card"><h3>📱 Testing Device</h3><ul><li>Android phone + USB debugging, or</li><li>Android Emulator</li><li>iOS Simulator requires macOS/Xcode</li></ul></div>
+</div><br>
+<div class="checklist">
+<label><input type="checkbox"> I have installed VS Code.</label>
+<label><input type="checkbox"> I have installed Node.js and can run <code>node -v</code>.</label>
+<label><input type="checkbox"> I can run <code>npm -v</code>.</label>
+<label><input type="checkbox"> I understand what a terminal/command prompt is.</label>
+<label><input type="checkbox"> I have an Android phone/emulator for testing.</label>
+</div>
+</section>
+
+<section>
+<div class="title"><h2>05 — Choose Your Beginner Setup</h2><p>For classroom learning, students need a manageable workflow.</p></div>
+<div class="tabs"><button class="tab active" onclick="showTab('expo')">Expo</button><button class="tab" onclick="showTab('rncli')">React Native CLI</button><button class="tab" onclick="showTab('learn')">What to Learn</button></div>
+<div id="expo" class="tabbody active card"><h3>⚡ Expo — Beginner-Friendly Path</h3><p>Expo provides tools and services that simplify starting and developing React Native apps. It is a practical option for beginners because students can get to a running app quickly.</p><div class="code">npx create-expo-app@latest</div><p class="muted">Then follow the project instructions and run the development server.</p></div>
+<div id="rncli" class="tabbody card"><h3>🛠️ React Native Community CLI</h3><p>This path gives more direct control over the native Android/iOS project configuration and is useful when students need native modules or platform-specific configuration.</p><div class="code">npx @react-native-community/cli@latest init MyApp</div><p class="muted">Use this route when your course specifically requires native project configuration.</p></div>
+<div id="learn" class="tabbody card"><h3>📚 Prerequisites</h3><ul><li>HTML fundamentals</li><li>CSS fundamentals</li><li>JavaScript fundamentals</li><li>Variables, functions, arrays and objects</li><li>ES6+ syntax: <code>let/const</code>, arrow functions, destructuring, modules</li><li>Basic terminal commands</li></ul></div>
+</section>
+
+<section id="roadmap">
+<div class="title"><h2>06 — React Native Learning Roadmap</h2><p>Follow this sequence for your mobile app programming class.</p></div>
+<div class="timeline">
+<div class="card"><b>1. JavaScript</b> → variables → functions → arrays/objects → events → async code</div>
+<div class="card"><b>2. React Fundamentals</b> → JSX → components → props → state → hooks</div>
+<div class="card"><b>3. React Native UI</b> → View → Text → Image → Pressable/Button → StyleSheet → ScrollView</div>
+<div class="card"><b>4. Mobile App Behavior</b> → navigation → forms → lists → state management → local storage</div>
+<div class="card"><b>5. Data & APIs</b> → fetch → REST APIs → JSON → authentication → loading/error states</div>
+<div class="card"><b>6. Build a Project</b> → plan → wireframe → components → code → test → debug → package/deploy</div>
+</div>
+</section>
+
+<section>
+<div class="title"><h2>07 — Your First React Native Component</h2><p>JSX + React Native components create the UI.</p></div>
+<div class="code"><span class="kw">import</span> { View, Text } <span class="kw">from</span> <span class="str">'react-native'</span>;<br><br>
+<span class="kw">export default function</span> App() {<br>
+&nbsp;&nbsp;<span class="kw">return</span> (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">View</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">Text</span>&gt;Hello, React Native!&lt;/<span class="tag">Text</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">View</span>&gt;<br>
+&nbsp;&nbsp;);<br>}
+</div><br>
+<div class="callout"><b>Observe:</b> Instead of normal web elements such as <code>&lt;div&gt;</code> and <code>&lt;p&gt;</code>, React Native uses mobile-oriented components such as <code>View</code> and <code>Text</code>.</div>
+</section>
+
+<section>
+<div class="title"><h2>08 — Mini Project Challenge</h2><p>Turn the lesson into an actual mobile application.</p></div>
+<div class="grid">
+<div class="card"><h3>📱 App Idea</h3><p><b>Student Task Tracker</b></p><p>Students can add tasks, mark tasks complete, and view their remaining tasks.</p></div>
+<div class="card"><h3>🧩 Components</h3><p>App → Header → TaskInput → TaskList → TaskItem → Button</p></div>
+<div class="card"><h3>🧠 Concepts</h3><p>Components + props + state + events + lists + styling + basic persistence.</p></div>
+</div>
+</section>
+
+<section id="quiz">
+<div class="title"><h2>🎯 React Native Challenge Quiz</h2><p>Check your understanding.</p></div>
+<div class="quiz"><div id="question"></div><div id="choices"></div><div id="feedback" class="feedback"></div><br><button id="next" onclick="nextQ()" style="display:none">Next Question →</button><div id="score" class="score"></div></div>
+</section>
+
+<footer>📱 React Native Starter Lab • Learn → Code → Test → Build</footer>
+
+<script>
+document.querySelectorAll('.reveal').forEach(c=>c.querySelector('button').onclick=()=>{let b=c.querySelector('button');b.remove();let p=document.createElement('p');p.textContent=c.dataset.text;p.style.color='var(--cyan)';c.appendChild(p)});
+function showTab(id){document.querySelectorAll('.tabbody').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active')}
+const q=[
+{q:'What is React Native mainly used to build?',a:['Websites only','Mobile applications','Databases','Operating systems'],c:1},
+{q:'React Native is most closely related to which technology?',a:['React','PHP','MySQL','Photoshop'],c:0},
+{q:'Which components are commonly used instead of HTML div and p elements?',a:['View and Text','Table and Row','Div and Paragraph','Section and Article'],c:0},
+{q:'When was React Native publicly announced by Facebook?',a:['2010','2013','2015','2020'],c:2},
+{q:'Which is a beginner-friendly way to start a React Native project?',a:['Expo','Excel','WordPress','MySQL'],c:0},
+{q:'Which language is commonly used with React Native?',a:['JavaScript/TypeScript','SQL only','HTML only','C only'],c:0}
+];let qi=0,sc=0;
+function render(){let x=q[qi];document.getElementById('question').innerHTML=`<h3>${qi+1}. ${x.q}</h3>`;document.getElementById('choices').innerHTML=x.a.map((v,i)=>`<button class="choice" onclick="ans(${i})">${String.fromCharCode(65+i)}. ${v}</button>`).join('');document.getElementById('feedback').textContent='';document.getElementById('next').style.display='none';document.getElementById('score').textContent=`Score: ${sc} / ${q.length}`;}
+function ans(i){let x=q[qi],bs=document.querySelectorAll('.choice');bs.forEach(b=>b.disabled=true);if(i===x.c){sc++;bs[i].classList.add('correct');document.getElementById('feedback').textContent='✅ Correct!'}else{bs[i].classList.add('wrong');bs[x.c].classList.add('correct');document.getElementById('feedback').textContent='❌ Review the lesson and keep going.'}document.getElementById('score').textContent=`Score: ${sc} / ${q.length}`;document.getElementById('next').style.display='inline-block'}
+function nextQ(){qi++;if(qi<q.length)render();else{document.getElementById('question').innerHTML=`<h3>🎉 Quiz Complete!</h3><p>You scored <b>${sc}/${q.length}</b>.</p>`;document.getElementById('choices').innerHTML='';document.getElementById('feedback').textContent=sc===q.length?'Excellent! You are ready for hands-on React Native development.':'Good start! Review the roadmap and try the quiz again.';document.getElementById('next').style.display='none'}}
+render();
+</script>
+</body>
+</html>
